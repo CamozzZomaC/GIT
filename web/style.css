@@ -12,6 +12,7 @@ header, footer {
   color: #fff;
   text-align: center;
   padding: 16px 0;
+  border-top: 4px solid #007acc;
 }
 
 main {
@@ -22,6 +23,11 @@ main {
 
 h1, h2, h3 {
   color: #222;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: bold;
+  border-bottom: 2px solid #007acc;
+  padding-bottom: 8px;
 }
 
 p {
