@@ -53,7 +53,10 @@ HEAD es un puntero que apunta al último commit realizado en la rama actual. Es 
 4. git log -> Ver el historial de commits. (ocpcional).
 5. git branch + nombre de la rama -> Crear una nueva rama para trabajar en una nueva característica o corrección de errores.
 6. git branch -> Ver las ramas disponibles en el repositorio.
-7. git checkout -b + nombre de la rama -> Mover HEAD a una rama específica para trabajar en esa rama.
+7. git checkout -b + nombre de la rama -> Mover HEAD a una rama específica para trabajar en esa rama. 
 8. git merge + nombre de la rama -> Combinar los cambios de una rama con otra.
 
+GITHUB
 
+9. git push origin + nombre de la rama -> Subir los cambios locales a un repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto.
+10. Crear un pull request en GitHub -> Solicitar que los cambios realizados en una rama específica sean revisados y fusionados con la rama principal del proyecto, facilitando la colaboración y revisión de código entre los miembros del equipo. Es la pull requet la que hace merge, no el comando git merge. El comando git merge se utiliza para fusionar ramas localmente en tu repositorio, mientras que la pull request es una solicitud para que los cambios realizados en una rama sean revisados y fusionados con la rama principal del proyecto en GitHub.
