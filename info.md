@@ -54,5 +54,6 @@ HEAD es un puntero que apunta al último commit realizado en la rama actual. Es 
 5. git branch + nombre de la rama -> Crear una nueva rama para trabajar en una nueva característica o corrección de errores.
 6. git branch -> Ver las ramas disponibles en el repositorio.
 7. git checkout -b + nombre de la rama -> Mover HEAD a una rama específica para trabajar en esa rama.
+8. git merge + nombre de la rama -> Combinar los cambios de una rama con otra.
 
 
