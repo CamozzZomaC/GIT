@@ -26,13 +26,33 @@ HEAD es un puntero que apunta al último commit realizado en la rama actual. Es 
 
 # git log -> Ver el historial de commits + hashes de los commits
 
-# git checkout -> Me permite mover HEAD a cualquier commit anterior al último, de ese modo entramos en estado "detached". Detached significa que no estamos en una rama, sino que estamos en un commit específico. En este estado, cualquier cambio que hagamos no se guardará en ninguna rama, por lo que es importante tener cuidado al hacer cambios en este estado.
+# git reflog -> Muestra un registro de los movimientos de HEAD, incluyendo los commits a los que se ha movido HEAD. Es útil para recuperar commits perdidos o para entender el historial de cambios en el repositorio.
 
->git checkout + hash del commit -> Mueve HEAD a ese commit específico, entrando en estado "detached".
+# git branch -> Muestra las ramas disponibles en el repositorio y la rama actual en la que estás trabajando. La rama actual se indica con un asterisco (*).
+
+# git branch + nombre de la rama -> Crea una nueva rama con el nombre especificado.
+
+# git checkout -> Me permite mover HEAD a cualquier commit anterior al último, de ese modo entramos en estado "detached". Detached significa que no estamos en una rama, sino que estamos en un commit específico. En este estado, cualquier cambio que hagamos no se guardará en ninguna rama, por lo que es importante tener cuidado al hacer cambios en este estado. Por esa razón checkout NUNCA se usa para moverse entre commits, sino entre ramas, por eso el comando correcto sería :
+
+>git checkout + nombre de la rama -> Mueve HEAD a la rama especificada, permitiéndote trabajar en esa rama y realizar commits que se guardarán en esa rama.
+
+>git checkout + hash del commit -> Mueve HEAD a ese commit específico, entrando en estado "detached". NUNCA
+
+# git checkout -b -> Crea una nueva rama y mueve HEAD a esa nueva rama, permitiéndote trabajar en esa rama y realizar commits que se guardarán en esa rama.
 
 # git reset -> Permite mover HEAD a un commit específico, pero a diferencia de git checkout, git reset también mueve la rama actual para que apunte al commit al que se ha movido HEAD. Esto significa que cualquier cambio que hayas hecho después del commit al que te has movido se perderá, ya que la rama actual ahora apunta a un commit anterior. Es importante tener cuidado al usar git reset, ya que puede resultar en la pérdida de trabajo si no se usa correctamente.
 
 >git reset + hash del commit -> Mueve HEAD y la rama actual a ese commit específico, perdiendo cualquier cambio posterior a ese commit.
 
-# git reflog -> Muestra un registro de los movimientos de HEAD, incluyendo los commits a los que se ha movido HEAD. Es útil para recuperar commits perdidos o para entender el historial de cambios en el repositorio.
+# git merge -> Permite combinar los cambios de una rama con otra. Cuando haces un merge, Git toma los cambios de la rama que estás fusionando y los aplica a la rama actual. Si hay conflictos entre los cambios, Git te pedirá que resuelvas esos conflictos antes de completar el merge.
+
+## FLUJO DE TRABAJO
+1. git status -> Ver el estado actual del repositorio.
+2. git add -> Agregar los cambios realizados a un archivo específico al área de staging.
+3. git commit -> Crear un nuevo commit con los cambios añadidos al área de staging.
+4. git log -> Ver el historial de commits. (ocpcional).
+5. git branch + nombre de la rama -> Crear una nueva rama para trabajar en una nueva característica o corrección de errores.
+6. git branch -> Ver las ramas disponibles en el repositorio.
+7. git checkout -b + nombre de la rama -> Mover HEAD a una rama específica para trabajar en esa rama.
+
 
