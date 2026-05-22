@@ -34,3 +34,5 @@ HEAD es un puntero que apunta al último commit realizado en la rama actual. Es 
 
 >git reset + hash del commit -> Mueve HEAD y la rama actual a ese commit específico, perdiendo cualquier cambio posterior a ese commit.
 
+# git reflog -> Muestra un registro de los movimientos de HEAD, incluyendo los commits a los que se ha movido HEAD. Es útil para recuperar commits perdidos o para entender el historial de cambios en el repositorio.
+
