@@ -72,6 +72,7 @@ GITHUB
 >git push -u origin + nombre de la rama (main)
 
 En realidad, se pone push -u origin + nombre de rama (feature/x) cuando se hace el primer push a una rama nueva, es decir, cuando se hace el primer push después de crear la rama. Esto establece la relación entre la rama local y la rama remota, lo que permite que en los siguientes pushes a esa misma rama ya no sea necesario usar -u, ya que la relación entre la rama local y la rama remota ya está establecida. Esto se llama tracking branch, y permite que git push y git pull funcionen sin necesidad de especificar el nombre del repositorio remoto y la rama cada vez.
+Gracias a la tracking branch local es como git sabe a qué rama remota enviar los cambios cuando se hace un git push, y de dónde obtener los cambios cuando se hace un git pull, sin necesidad de especificar el nombre del repositorio remoto y la rama cada vez.
 
 11. Crear un pull request en GitHub -> Solicitar que los cambios realizados en una rama específica sean revisados y fusionados con la rama principal del proyecto, facilitando la colaboración y revisión de código entre los miembros del equipo. Es la pull requet la que hace merge, no el comando git merge. El comando git merge se utiliza para fusionar ramas localmente en tu repositorio, mientras que la pull request es una solicitud para que los cambios realizados en una rama sean revisados y fusionados con la rama principal del proyecto en GitHub.
 
