@@ -57,7 +57,7 @@ HEAD es un puntero que apunta al último commit realizado en la rama actual. Es 
 8. git merge + nombre de la rama -> Combinar los cambios de una rama con otra, pero cuál se mergea con cuál? La rama que se mergea es la rama actual, es decir, la rama en la que estás trabajando. Por ejemplo, si estás en la rama "feature" y quieres fusionar los cambios de la rama "main", debes hacer git merge main mientras estás en la rama "feature".
 
 GITHUB
-9. git push origin + nombre de la rama -> Subir los cambios locales a un repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto.
+9. git push origin + nombre de la rama -> Subir los cambios locales a un repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto. Esto solo se hace la primera vez que se sube una rama nueva, después de eso, ya no es necesario usar -u porque la relación entre la rama local y la rama remota ya está establecida. 
 
 >git push -u origin + nombre de la rama
 
@@ -65,4 +65,6 @@ GITHUB
 
 ## FLUJO DE TRABAJO "DIARIO"
 1. git pull -> Obtener los cambios más recientes del repositorio remoto en GitHub y fusionarlos con tu rama local, asegurando que tu trabajo esté actualizado con los cambios realizados por otros colaboradores antes de comenzar a trabajar en nuevas características o correcciones de errores.
-2. git push -u origin + nombre de la rama -> Subir los cambios locales al repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto.
+Pull por debajo está haciendo un fetch + merge, es decir, primero obtiene los cambios del repositorio remoto y luego los fusiona con tu rama local. Es importante hacer un pull antes de comenzar a trabajar en nuevas características o correcciones de errores para asegurarte de que estás trabajando con la versión más reciente del código y evitar conflictos de fusión más adelante.
+
+2. git push -> Subir los cambios locales al repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto (no se pone -u origin +nombre de rama porque ya se ha hecho el push -u anteriormente, cuándo? El primer push que se hace a una rama nueva, es decir, el primer push después de crear la rama, se debe hacer con -u para establecer la relación entre la rama local y la rama remota. Después de ese primer push, ya no es necesario usar -u en los siguientes pushes a esa misma rama, ya que la relación entre la rama local y la rama remota ya está establecida).
