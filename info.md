@@ -1,3 +1,7 @@
+# git init
+
+0. git init -> Inicializa un nuevo repositorio de Git en el directorio actual, creando una estructura de archivos y carpetas necesarias para que Git pueda rastrear los cambios en ese directorio. Esto crea .git en el directorio actual, lo que indica que ese directorio ahora es un repositorio de Git.
+
 # git status -> Muestra el estado actual del repositorio, incluyendo los archivos que han sido modificados, los archivos que están en el área de staging y los archivos que no están siendo rastreados por Git.
 
 1. git status -> No commits yet
@@ -54,17 +58,28 @@ HEAD es un puntero que apunta al último commit realizado en la rama actual. Es 
 5. git branch + nombre de la rama -> Crear una nueva rama para trabajar en una nueva característica o corrección de errores.
 6. git branch -> Ver las ramas disponibles en el repositorio.
 7. git checkout -b + nombre de la rama -> Mover HEAD a una rama específica para trabajar en esa rama. (sustituye git branch + nombre de la rama).
-8. git merge + nombre de la rama -> Combinar los cambios de una rama con otra, pero cuál se mergea con cuál? La rama que se mergea es la rama actual, es decir, la rama en la que estás trabajando. Por ejemplo, si estás en la rama "feature" y quieres fusionar los cambios de la rama "main", debes hacer git merge main mientras estás en la rama "feature".
+8. git merge + nombre de la rama -> Combinar los cambios de una rama con otra, pero cuál se mergea con cuál? La rama que se mergea es la rama actual, es decir, la rama en la que estás trabajando. Por ejemplo, si estás en la rama "feature" y quieres fusionar los cambios de la rama "main", debes hacer git merge main mientras estás en la rama "feature".*
+*8b. GIT REBASE
+git rebase es una alternativa a git merge para combinar cambios de una rama con otra. En lugar de crear un nuevo commit de fusión, git rebase toma los commits de la rama que estás rebasing y los aplica uno por uno sobre la rama base. Esto puede resultar en un historial de commits más limpio y lineal, pero también puede ser más complicado de usar y puede causar problemas si no se usa correctamente. Es importante tener cuidado al usar git rebase, especialmente si estás trabajando en un equipo, ya que puede resultar en conflictos de fusión y pérdida de trabajo si no se usa correctamente.
 
 GITHUB
-9. git push origin + nombre de la rama -> Subir los cambios locales a un repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto. Esto solo se hace la primera vez que se sube una rama nueva, después de eso, ya no es necesario usar -u porque la relación entre la rama local y la rama remota ya está establecida. 
+9. git remote add origin + URL del repositorio -> Agregar un repositorio remoto en GitHub, lo que permite que puedas subir tus cambios locales a ese repositorio remoto y colaborar con otros desarrolladores en el proyecto. El comando git remote add origin establece una conexión entre tu repositorio local y el repositorio remoto en GitHub. Add origin 
 
->git push -u origin + nombre de la rama
+>git remote add origin + URL del repositorio
 
-10. Crear un pull request en GitHub -> Solicitar que los cambios realizados en una rama específica sean revisados y fusionados con la rama principal del proyecto, facilitando la colaboración y revisión de código entre los miembros del equipo. Es la pull requet la que hace merge, no el comando git merge. El comando git merge se utiliza para fusionar ramas localmente en tu repositorio, mientras que la pull request es una solicitud para que los cambios realizados en una rama sean revisados y fusionados con la rama principal del proyecto en GitHub.
+10. git push origin + nombre de la rama -> Subir los cambios locales a un repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto. Esto solo se hace la primera vez que se sube una rama nueva, después de eso, ya no es necesario usar -u porque la relación entre la rama local y la rama remota ya está establecida. Normalmente en este punto origin siempre sera main, pues es el primer push (Initial commit).
+
+>git push -u origin + nombre de la rama (main)
+
+En realidad, se pone push -u origin + nombre de rama (feature/x) cuando se hace el primer push a una rama nueva, es decir, cuando se hace el primer push después de crear la rama. Esto establece la relación entre la rama local y la rama remota, lo que permite que en los siguientes pushes a esa misma rama ya no sea necesario usar -u, ya que la relación entre la rama local y la rama remota ya está establecida. Esto se llama tracking branch, y permite que git push y git pull funcionen sin necesidad de especificar el nombre del repositorio remoto y la rama cada vez.
+
+11. Crear un pull request en GitHub -> Solicitar que los cambios realizados en una rama específica sean revisados y fusionados con la rama principal del proyecto, facilitando la colaboración y revisión de código entre los miembros del equipo. Es la pull requet la que hace merge, no el comando git merge. El comando git merge se utiliza para fusionar ramas localmente en tu repositorio, mientras que la pull request es una solicitud para que los cambios realizados en una rama sean revisados y fusionados con la rama principal del proyecto en GitHub.
 
 ## FLUJO DE TRABAJO "DIARIO"
 1. git pull -> Obtener los cambios más recientes del repositorio remoto en GitHub y fusionarlos con tu rama local, asegurando que tu trabajo esté actualizado con los cambios realizados por otros colaboradores antes de comenzar a trabajar en nuevas características o correcciones de errores.
 Pull por debajo está haciendo un fetch + merge, es decir, primero obtiene los cambios del repositorio remoto y luego los fusiona con tu rama local. Es importante hacer un pull antes de comenzar a trabajar en nuevas características o correcciones de errores para asegurarte de que estás trabajando con la versión más reciente del código y evitar conflictos de fusión más adelante.
 
 2. git push -> Subir los cambios locales al repositorio remoto en GitHub, permitiendo que otros colaboradores puedan acceder a esos cambios y colaborar en el proyecto (no se pone -u origin +nombre de rama porque ya se ha hecho el push -u anteriormente, cuándo? El primer push que se hace a una rama nueva, es decir, el primer push después de crear la rama, se debe hacer con -u para establecer la relación entre la rama local y la rama remota. Después de ese primer push, ya no es necesario usar -u en los siguientes pushes a esa misma rama, ya que la relación entre la rama local y la rama remota ya está establecida).
+
+3. Y cada x tiempo conviene volver a hacer un git pull para asegurarte de que tu trabajo esté actualizado con los cambios realizados por otros colaboradores. Esto va cambiando el origin/main al commit más reciente.
+
